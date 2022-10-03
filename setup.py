@@ -5,17 +5,17 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 __version__ = "0.0.0" # update as per your need
 
-REPO_NAME = "<YOUR REPO NAME>"
-AUTHOR_USER_NAME = "<YOUR USERNAME>"
-SRC_REPO = "<YOUR REPO NAME>"
-AUTHOR_EMAIL = "<YOUR EMAIL ID>"
+REPO_NAME = "pyGeckoCrypto"
+AUTHOR_USER_NAME = "abealexander"
+SRC_REPO = "pyGeckoCrypto"
+AUTHOR_EMAIL = "abealexander07@gmail.com"
 
 setuptools.setup(
     name=SRC_REPO,
     version=__version__,
     author=AUTHOR_USER_NAME,
     author_email=AUTHOR_EMAIL,
-    description="A small python package",
+    description="A wrapper for the CoinGecko API to fetch prices and historical data",
     long_description=long_description,
     long_description_content="text/markdown",
     url=f"https://github.com/{AUTHOR_USER_NAME}/{REPO_NAME}",
