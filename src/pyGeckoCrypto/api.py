@@ -21,20 +21,21 @@ def request(URL: str):
         response = session.get(URL, timeout=5)
         content = json.loads(response.content.decode("utf-8"))
         return content
-    except Exception as e:
-        logger.exception(e)
+    except Exception:
+        logger.exception("Request Incorrect")
+        raise InvalidRequestException("Request Incorrect")
 
 
 @ensure_annotations
 def check_coinID(coinID: str) -> bool:
     try:
+        coinID = coinID.lower()
         coinIDS = request("https://api.coingecko.com/api/v3/coins/list")
         for i in coinIDS:
             if i["id"] == coinID:
                 return True
         else:
             return False
-
     except Exception as e:
         logger.exception(e)
         return False
@@ -43,6 +44,7 @@ def check_coinID(coinID: str) -> bool:
 @ensure_annotations
 def check_currency(currency: str) -> bool:
     try:
+        currency = currency.lower()
         currencies = request(
             "https://api.coingecko.com/api/v3/simple/supported_vs_currencies"
         )
@@ -58,6 +60,8 @@ def check_currency(currency: str) -> bool:
 @ensure_annotations
 def get_current_price(coinID: str, currency: str) -> float:
     try:
+        coinID = coinID.lower()
+        currency = currency.lower()
         if coinID is None:
             logger.exception("Coin ID cannot be None")
             raise InvalidCoinIDException("Coin ID cannot be None")
@@ -72,7 +76,7 @@ def get_current_price(coinID: str, currency: str) -> float:
             raise InvalidCurrencyException("Currency Incorrect")
         API_URL = f"https://api.coingecko.com/api/v3/simple/price?ids={coinID}&vs_currencies={currency}"
         price = request(API_URL)
-        return price[coinID][currency]
+        return float(price[coinID][currency])
     except Exception as e:
         logger.exception("Could not get current price %s" % e)
         raise e
