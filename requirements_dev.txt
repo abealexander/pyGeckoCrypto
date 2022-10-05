@@ -1,4 +1,7 @@
-# project requirements below
+requests==2.28.1
+types-requests==2.28.11.1
+notebook==6.4.12
+ensure==1.0.2
 
 # dev requirements -
 pytest==7.1.3
