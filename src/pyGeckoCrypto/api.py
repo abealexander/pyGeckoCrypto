@@ -1,4 +1,3 @@
-from tracemalloc import start
 from ensure import ensure_annotations
 from pyGeckoCrypto.custom_exception import (
     InvalidRequestException,
@@ -119,7 +118,8 @@ def get_hist_price_range(
         if not (check_timestamp(startdate) and check_timestamp(enddate)):
             logger.exception("Timestamp Incorrect")
             raise InvalidTimestamp
-        API_URL = f"https://api.coingecko.com/api/v3/coins/{coinID}/market_chart/range?vs_currency={currency}&from={startdate}&to={enddate}"
+        API_URL = f"https://api.coingecko.com/api/v3/coins/{coinID}/market_chart/ \
+            range?vs_currency={currency}&from={startdate}&to={enddate}"
         hist_price_range = request(API_URL)
         return hist_price_range
     except Exception as e:
