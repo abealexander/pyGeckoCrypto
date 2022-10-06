@@ -5,40 +5,32 @@ from pyGeckoCrypto.custom_exception import InvalidRequestException
 good_URL_data = [
     ("https://api.coingecko.com/api/v3/coins/list", list),
     ("https://api.coingecko.com/api/v3/simple/supported_vs_currencies", list),
-    (
-        "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd",
-        dict,
-    ),
+    ("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd", dict)
 ]
 
 bad_URL_data = [
     ("https://api.c0ingeck0.com/api/v3/coin/"),
     ("https://ap1.coingecko.com/api/v3/simple/supported_vs_currencies"),
     ("https://api.coingecko.ORG/api/v3/simple/price?ids=bitcoin&vs_currencies=usd"),
-    ("https://apiS.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd"),
+    ("https://apiS.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd")
 ]
 
 coinID_test_data = [
     ("bitcoin", True),
     ("ethereum", True),
     ("fantom", True),
-    ("gmx", True),
-    ("optimism", True),
     ("btc", False),
     ("eth", False),
-    ("ftm", False),
-    ("op", False),
+    ("ftm", False)
 ]
 
 currency_test_data = [
     ("btc", True),
     ("eth", True),
-    ("usd", True),
     ("inr", True),
     ("usdt", False),
     ("paise", False),
-    ("dollar", False),
-    ("bitcoin", False),
+    ("dollar", False)
 ]
 
 timestamp_test_data = [
@@ -47,7 +39,7 @@ timestamp_test_data = [
     ("1234", True),
     ("abcd", False),
     ("123O", False),
-    ("1234-5678", False),
+    ("1234-5678", False)
 ]
 
 
