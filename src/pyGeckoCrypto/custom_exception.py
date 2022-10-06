@@ -15,6 +15,7 @@ class InvalidCurrencyException(Exception):
         self.message = message
         super().__init__(self.message)
 
+
 class InvalidTimestamp(Exception):
     def __init__(self, message: str = "Timestamp is not valid"):
         self.message = message
