@@ -1,5 +1,5 @@
 import pytest
-from pyGeckoCrypto import request, check_coinID, check_currency
+from pyGeckoCrypto import request, check_coinID, check_currency, check_timestamp
 from pyGeckoCrypto.custom_exception import InvalidRequestException
 
 good_URL_data = [
@@ -41,6 +41,17 @@ currency_test_data = [
     ("bitcoin", False),
 ]
 
+timestamp_test_data = [
+    ("1665051578", True),
+    ("1664582400", True),
+    ("1234", True),
+    ("12345678", True),
+    ("123456789000", False),
+    ("abcd", False),
+    ("123O", False),
+    ("1234-5678", False),
+]
+
 
 @pytest.mark.parametrize("URL, response", good_URL_data)
 def test_request_pass(URL, response):
@@ -61,3 +72,7 @@ def test_check_coinID(coinID, response):
 @pytest.mark.parametrize("currency, response", currency_test_data)
 def test_check_currency(currency, response):
     assert check_currency(currency) == response
+
+@pytest.mark.parametrize("timestamp, response", timestamp_test_data)
+def test_check_timestamp(timestamp, response):
+    assert check_timestamp(timestamp) == response
