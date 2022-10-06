@@ -45,8 +45,6 @@ timestamp_test_data = [
     ("1665051578", True),
     ("1664582400", True),
     ("1234", True),
-    ("12345678", True),
-    ("123456789000", False),
     ("abcd", False),
     ("123O", False),
     ("1234-5678", False),
