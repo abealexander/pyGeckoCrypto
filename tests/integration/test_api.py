@@ -5,7 +5,6 @@ good_price_data = [
     ("bitcoin", "usd", float),
     ("ethereum", "inr", float),
     ("fantom", "usd", float),
-    ("gmx", "cad", float),
     ("optimism", "eur", float),
 ]
 
